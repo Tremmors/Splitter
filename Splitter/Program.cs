@@ -53,10 +53,6 @@ namespace Splitter
 
             NameValuePair nvp = new NameValuePair(Environment.CommandLine);
 
-            nvp["FileName"] = @"F:\SRC\Splitter\Splitter\bin\Debug\Firefox Setup 4.0.exe";
-            nvp["CHUNKSIZE"] = "1MB";
-            nvp["action"] = "COMBINE";
-
             string strFileName = nvp["FILENAME"];
             string strChunkSize = nvp["CHUNKSIZE"];
 
