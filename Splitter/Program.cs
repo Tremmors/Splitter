@@ -22,7 +22,8 @@
 // </copywrite>
 //--------------------------------------------------------------------------------------------
 namespace Splitter
-{
+{   //namespace : Splitter
+
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -71,17 +72,20 @@ namespace Splitter
 
                 if (nvp["ACTION"] == "COMBINE")
                 {   // Combine
+
                     CombineFiles(strFileName);
+
                 }   // Combine
                 else
                 {   // Split
+
                     if (!System.IO.File.Exists(strFileName))
-                    {
+                    {   // Inputfile does not exist
 
                         Console.WriteLine("ERROR: Input file does not exist.");
                         HowDoIUseThis();
 
-                    }
+                    }   // Inputfile does not exist
                     else
                     {   // Input File Exists
 
@@ -120,7 +124,8 @@ namespace Splitter
         ///     Output to the screen how to use this program.
         /// </summary>
         public static void HowDoIUseThis()
-        {
+        {   // HowDoIUseThis
+
             Console.WriteLine("Splitter.exe Action={Split|Combine} FileName={Filename} [ChunkSize={size}{units}]");
             Console.WriteLine("     Action     What to do with the file(s)");
             Console.WriteLine("                Split   - Take one large file and chop it into smaller chunks");
@@ -144,7 +149,8 @@ namespace Splitter
             Console.WriteLine("                   GIG       = GigaBytes");
             Console.WriteLine("                   GIGS      = GigaBytes");
             Console.WriteLine("                   GIGABYTES = GigaBytes");
-        }
+
+        }   // HowDoIUseThis
 
         /// <summary>
         ///     Get a long denoting how many bytes are represented by a given string
@@ -161,17 +167,21 @@ namespace Splitter
         /// </returns>
         public static long GetBytes(string chunkSize)
         {   // GetBytes
+
             long output = -1;
             Regex r = new Regex("^([0-9]+)([a-zA-Z]+)");
             Match mc = r.Match(chunkSize);
             if (mc.Groups.Count == 3)
             {   // Scalar + Unit
+
                 long scalar;
                 long multiplier = 1;
                 if (long.TryParse(mc.Groups[1].Value, out scalar))
                 {   // Scalar parsable
+
                     switch (mc.Groups[2].Value.ToUpper())
                     {   // Switch for the Unit
+
                         case "K":
                         case "KB":
                         case "KILOBYTES":
@@ -327,4 +337,5 @@ namespace Splitter
         }   // SplitFile
 
     }   // class : Program
-}
+
+}   //namespace : Splitter
